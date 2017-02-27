@@ -1,37 +1,32 @@
-#!/usr/bin/perl
-
 use strict;
 use warnings;
 
-=encoding UTF8
-=head1 SYNOPSYS
+    my $x = <STDIN>;
+    chomp $x;
+    my $i = 0;
+    my $bin = "";
+    my $num;
 
-Поиск номера первого не нулевого бита.
+     while ($x > 0){
+         if ($x % 2) {
+             $bin = 1 . $bin;
+         } else { $bin = 0 . $bin;
+            };
+    $x >>= 1;
+     }
 
-=head1 run ($x)
+    print "$bin\n";
 
-Функция поиска первого не нулевого бита в 32-битном числе (кроме 0).
-Пачатает номер первого не нулевого бита в виде "$num\n"
 
-Примеры: 
-
-run(1) - печатает "0\n".
-
-run(4) - печатает "2\n"
-
-run(6) - печатает "1\n"
-
-=cut
-
-sub run {
-    my ($x) = @_;
-    my $num = 0;
-
-    # ...
-    # Вычисление номера первого ненулевого бита 
-    # ...
-
-    print "$num\n";
+$num = $bin % 10;
+if ($num == 1) {
+    print "1\n";
 }
-
-1;
+else {
+while ($num != 1) {
+    $num = $bin % 10;
+    $i++;
+    $bin = $bin / 10;
+}
+    print "$i\n";
+}

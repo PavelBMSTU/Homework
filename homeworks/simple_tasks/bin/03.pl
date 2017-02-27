@@ -1,38 +1,16 @@
-#!/usr/bin/perl
-
 use strict;
 use warnings;
+    my $x = <STDIN>;
+    my $y = <STDIN>;
+    my $z = <STDIN>;
 
-=encoding UTF8
-=head1 SYNOPSYS
+    my @array = ($x,$y,$z);
+    my ($min, $max);
 
-Поиск наименьшего и наибольшего из 3-х чисел
+for (@array) {
+    $min = $_ if !$min || $_ <= $min;
+    $max = $_ if !$max || $_ >= $max
+        };
 
-=head1 run ($x, $y, $z)
-
-Функция поиска минимального и максимального из 3-х чисел $x, $y, $z.
-Пачатает минимальное и максимальное числа, в виде "$value1, $value2\n"
-
-Примеры: 
-
-run(1, 2, 3) - печатает "1, 3\n".
-
-run(1, 1, 1) - печатает "1, 1\n"
-
-run(1, 2, 2) - печатает "1, 2\n"
-
-=cut
-
-sub run {
-    my ($x, $y, $z) = @_;
-    my $min = undef;
-    my $max = undef;
-
-    # ...
-    # Вычисление минимума и максимума
-    # ...
 
     print "$min, $max\n";
-}
-
-1;
