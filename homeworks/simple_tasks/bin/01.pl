@@ -31,10 +31,15 @@ sub run {
 
     my $x1 = undef;
     my $x2 = undef;
-
-    if (($b**2 - 4*$a*$c) >= 0) {
-        $x1 = ((-1)*$b + ($b**2 - 4*$a*$c)**(1/2))/(2*$a);
-        $x2 = ((-1)*$b - ($b**2 - 4*$a*$c)**(1/2))/(2*$a);
+    if ($a_value == 0) {
+        while ($a_value == 0) {
+            $a_value = @_;
+        }
+    }
+    
+    if (($b_value**2 - 4*$a_value*$c_value) >= 0) {
+        $x1 = ((-1)*$b_value + ($b_value**2 - 4*$a_value*$c_value)**(1/2))/(2*$a_value);
+        $x2 = ((-1)*$b_value - ($b_value**2 - 4*$a_value*$c_value)**(1/2))/(2*$a_value);
         print "$x1, $x2\n";
     }
     else {

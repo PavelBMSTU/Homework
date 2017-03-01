@@ -21,13 +21,16 @@ encode('#abc', 1) - печатает '$bcd'
 
 sub encode {
     my ($str, $key) = @_;
-    my $encoded_str;
-
+    my $encoded_str = '';
+    my $str1 = '';
+    
     chomp $str;
     chomp $key;
     
     for (my $i = 0; $i < length $str; $i++) {
-        $encoded_str = chr (ord (substr $str,$i,1) + $key);
+        $str1 = ord (substr $str,$i,1) + $key;
+        $str1 = $str1 - 127 if ($str1 > 127);
+        $encoded_str = chr ($str1);
         print "$encoded_str";
     }
     
@@ -47,12 +50,14 @@ decode('$bcd', 1) - печатает '#abc'
 
 sub decode {
     my ($encoded_str, $key) = @_;
-    my $str;
-    
+    my $str = '';
+    my str1 = '';
     chomp $encoded_str;
     
     for (my $i = 0; $i < length $encoded_str; $i++) {
-        $str = chr (ord (substr $encoded_str,$i,1) - $key);
+        $str1 = ord (substr $encoded_str,$i,1) - $key;
+        $str1 = 127 - $str1 if ($str1 < 0);
+        $str = chr ($str1);
         print "$str";
     }
     

@@ -32,7 +32,7 @@ sub run {
     chomp $str;
     chomp $substr;
    
-    for(my $i = 0; $i < (length $str); $i = $i+(length $substr)) {
+    for(my $i = 0; $i < (length $str); $i = $i+(length $substr) - 1) {
         $num++ if ((substr $str, $i, length $substr) eq $substr);
     }
 

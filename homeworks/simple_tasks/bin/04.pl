@@ -26,32 +26,27 @@ run(6) - печатает "1\n"
 sub run {
     my ($x) = @_;
     my $num = 0;
-    chomp $x;
-    my $kol = 0;
-    my $bin = "";
-    
-    while ($x > 0){
-        if ($x % 2) {
-            $bin = 1 . $bin;
-        } else { $bin = 0 . $bin;
-        };
-        $x >>= 1;
-    }
-    
-    $kol = $bin % 10;
-    if ($kol == 1) {
-        print "1\n";
-    }
-    else {
-        while ($kol != 1) {
-            $kol = $bin % 10;
-            $num++;
-            $bin = $bin / 10;
-        }
-        print "$num\n";
-    }
 
-
+    if(($x & 0xFFFF) == 0)  {
+        $num = 16;
+        $x >>= 16;
+    }
+    if(($x & 0x00FF) == 0)  {
+        $num += 8;
+        $x >>= 8;
+    }
+    if(($x & 0x000F) == 0)   {
+        $num += 4;
+        $x >>= 4;
+    }
+    if(($x & 0x0003) == 0)   {
+        $num += 2;
+        $x >>= 2;
+    }
+    if(($x & 0x0001) == 0)   {
+        $num += 1;
+    }
+print "$num\n";
     
 }
 

@@ -32,7 +32,7 @@ sub run {
             }
         }
         if ($z == 0) {
-           	print "$i\n";
+           	print "$i\n" if ($i > 1)
         }
         else {
             $z = 0;
