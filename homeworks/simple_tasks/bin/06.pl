@@ -51,7 +51,7 @@ decode('$bcd', 1) - печатает '#abc'
 sub decode {
     my ($encoded_str, $key) = @_;
     my $str = '';
-    my str1 = '';
+    my $str1 = '';
     chomp $encoded_str;
     
     for (my $i = 0; $i < length $encoded_str; $i++) {
