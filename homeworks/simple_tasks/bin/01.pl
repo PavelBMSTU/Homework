@@ -37,9 +37,6 @@ sub run {
     
     
     if ($D >= 0) {
-        if ($a_value == 0) {
-        print "No solution!\n";
-        }
         if ($a_value != 0) {
         $x1 = ((-1)*$b_value + ($D)**(1/2))/(2*$a_value);
         $x2 = ((-1)*$b_value - ($D)**(1/2))/(2*$a_value);
