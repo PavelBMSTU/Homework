@@ -31,16 +31,21 @@ sub run {
 
     my $x1 = undef;
     my $x2 = undef;
-    if ($a_value == 0) {
-        while ($a_value == 0) {
-            $a_value = @_;
-        }
-    }
     
-    if (($b_value**2 - 4*$a_value*$c_value) >= 0) {
-        $x1 = ((-1)*$b_value + ($b_value**2 - 4*$a_value*$c_value)**(1/2))/(2*$a_value);
-        $x2 = ((-1)*$b_value - ($b_value**2 - 4*$a_value*$c_value)**(1/2))/(2*$a_value);
+    my $D = $b_value**2 - (4*$a_value*$c_value);
+    
+    
+    
+    if ($D >= 0) {
+        if ($a_value == 0) {
+            $x1 = (-1)*$c_value/$b_value;
+            print "$x1\n";
+        }
+        if ($a_value != 0) {
+        $x1 = ((-1)*$b_value + ($D)**(1/2))/(2*$a_value);
+        $x2 = ((-1)*$b_value - ($D)**(1/2))/(2*$a_value);
         print "$x1, $x2\n";
+    }
     }
     else {
         print "No solution!\n";
