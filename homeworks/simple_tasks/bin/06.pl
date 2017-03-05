@@ -29,13 +29,14 @@ sub encode {
     chomp $str;
     chomp $key;
     
+    my $k = int($key / 128);
+    my $k1 = $key-($k*128);
+    
     for (my $i = 0; $i < length $str; $i++) {
         $str1 = ord (substr $str,$i,1) + $key;
-        if ($key > 127) {
-            $k = int($key / 127);
-            $str1 = ord (substr $str,$i,1) + $key-($k*127);
+        if ($key >= 128) {
+            $str1 = ord (substr $str,$i,1) + $k1;
         }
-        $str1 = ord (substr $str,$i,1) if ($key == 127);
         $encoded_str = chr($str1);
         print "$encoded_str";
     }
@@ -58,15 +59,16 @@ sub decode {
     my ($encoded_str, $key) = @_;
     my $str = '';
     my $str1 = '';
+    
     chomp $encoded_str;
-    my $k;
+    
+    my $k = int($key / 128);
+    my $k1 = $key-($k*128);
     for (my $i = 0; $i < length $encoded_str; $i++) {
         $str1 = ord (substr $encoded_str,$i,1) - $key;
-        if ($key > 127) {
-            $k = int($key / 127);
-            $str1 = ord (substr $encoded_str,$i,1) - ($key-($k*127));
+        if ($key >= 128) {
+            $str1 = ord (substr $encoded_str,$i,1) - $k1;
         }
-        $str1 = ord (substr $encoded_str,$i,1) if ($key == 127);
         $str = chr($str1);
         print "$str";
     }
